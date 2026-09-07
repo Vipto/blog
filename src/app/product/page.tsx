@@ -64,7 +64,7 @@ export default function ProductPage() {
             <h2 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>
               The Local Information Blindspot
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '32px' }}>
               <div>
                 <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '16px' }}>
                   Even in an era dominated by e-commerce, people still prefer buying from nearby stores for urgent needs, hands-on physical inspection, and immediate possession.
@@ -119,7 +119,7 @@ export default function ProductPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
               gap: '24px',
               marginBottom: '48px',
             }}
@@ -174,7 +174,7 @@ export default function ProductPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
               gap: '24px',
             }}
           >
@@ -229,7 +229,7 @@ export default function ProductPage() {
         <div className="container">
           <div
             style={{
-              padding: '36px',
+              padding: 'clamp(20px, 4vw, 36px)',
               borderRadius: 'var(--radius-xl)',
               background: 'var(--bg-secondary)',
               border: '1px solid var(--border-subtle)',

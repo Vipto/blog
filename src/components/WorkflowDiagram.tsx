@@ -60,7 +60,7 @@ export default function WorkflowDiagram() {
         background: 'var(--bg-secondary)',
         border: '1px solid var(--border-subtle)',
         borderRadius: 'var(--radius-xl)',
-        padding: '32px',
+        padding: 'clamp(16px, 4vw, 32px)',
       }}
     >
       <div style={{ marginBottom: '28px', textAlign: 'center' }}>
@@ -77,7 +77,7 @@ export default function WorkflowDiagram() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 110px), 1fr))',
           gap: '8px',
           marginBottom: '28px',
         }}
@@ -133,9 +133,9 @@ export default function WorkflowDiagram() {
         style={{
           background: 'var(--bg-primary)',
           borderColor: 'var(--border-medium)',
-          padding: '28px',
+          padding: 'clamp(16px, 3.5vw, 28px)',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
           gap: '24px',
           alignItems: 'center',
         }}

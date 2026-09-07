@@ -111,16 +111,7 @@ export const RealisticShopEnvironment: React.FC<RealisticShopEnvironmentProps> =
           y: isZoomedIn ? -6 : 0,
         }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          width: '100%',
-          padding: '0 14px 18px',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '8px',
-          alignItems: 'flex-end',
-        }}
+        className="shelf-grid"
       >
         {shoeItems.map((item, idx) => {
           const isHighlighted = highlightIndex === null || highlightIndex === idx;
@@ -144,9 +135,9 @@ export const RealisticShopEnvironment: React.FC<RealisticShopEnvironmentProps> =
             >
               {/* Product Shelf Slot Stand / Acrylic Riser */}
               <div
+                className="shelf-shoe-slot"
                 style={{
                   width: '94%',
-                  height: '82px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -160,16 +151,17 @@ export const RealisticShopEnvironment: React.FC<RealisticShopEnvironmentProps> =
               <div
                 style={{
                   marginTop: '4px',
-                  padding: '2px 8px',
+                  padding: '2px 6px',
                   borderRadius: '4px',
                   background: 'rgba(15, 23, 42, 0.85)',
                   border: '1px solid rgba(255, 255, 255, 0.14)',
-                  fontSize: '0.625rem',
+                  fontSize: 'clamp(0.475rem, 1.4vw, 0.625rem)',
                   fontWeight: 800,
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.03em',
                   color: '#cbd5e1',
                   textAlign: 'center',
                   boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {item.label}
@@ -192,16 +184,41 @@ export const RealisticShopEnvironment: React.FC<RealisticShopEnvironmentProps> =
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 16px',
+          padding: '0 12px',
         }}
       >
         {/* Steel Shelf Mounting Screws */}
-        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#cbd5e1', boxShadow: 'inset 0 1px 2px #000000, 0 1px 2px rgba(0,0,0,0.5)' }} />
-        <div style={{ fontSize: '0.575rem', fontWeight: 800, color: '#fef3c7', letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.9 }}>
+        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#cbd5e1', boxShadow: 'inset 0 1px 2px #000000, 0 1px 2px rgba(0,0,0,0.5)', flexShrink: 0 }} />
+        <div style={{ fontSize: 'clamp(0.48rem, 1.6vw, 0.575rem)', fontWeight: 800, color: '#fef3c7', letterSpacing: '0.06em', textTransform: 'uppercase', opacity: 0.9, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', padding: '0 4px' }}>
           APEX FOOTWEAR • PHYSICAL STORE DISPLAY SHELF
         </div>
-        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#cbd5e1', boxShadow: 'inset 0 1px 2px #000000, 0 1px 2px rgba(0,0,0,0.5)' }} />
+        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#cbd5e1', boxShadow: 'inset 0 1px 2px #000000, 0 1px 2px rgba(0,0,0,0.5)', flexShrink: 0 }} />
       </div>
+
+      <style jsx>{`
+        .shelf-grid {
+          position: relative;
+          z-index: 10;
+          width: 100%;
+          padding: 0 14px 18px;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 8px;
+          align-items: flex-end;
+        }
+        .shelf-shoe-slot {
+          height: 82px;
+        }
+        @media (max-width: 640px) {
+          .shelf-grid {
+            padding: 0 8px 12px;
+            gap: 4px;
+          }
+          .shelf-shoe-slot {
+            height: 60px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

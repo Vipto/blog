@@ -22,7 +22,7 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
         minHeight: '290px',
         background: '#070b14',
         borderRadius: '22px',
-        padding: '16px 14px',
+        padding: '16px 12px',
         overflow: 'hidden',
         border: '1.5px solid rgba(56, 189, 248, 0.45)',
         boxShadow: '0 0 40px rgba(56, 189, 248, 0.18)',
@@ -68,19 +68,21 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
           paddingBottom: '10px',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <Cpu size={14} color="#38bdf8" />
           </div>
-          <span style={{ fontSize: '0.725rem', fontWeight: 800, color: '#38bdf8', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: 'clamp(0.65rem, 1.8vw, 0.725rem)', fontWeight: 800, color: '#38bdf8', letterSpacing: '0.04em' }}>
             VIPTO CV ENGINE • MULTI-OBJECT SEGMENTATION
           </span>
         </div>
-        <div style={{ fontSize: '0.675rem', fontWeight: 700, color: '#10b981', display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <div style={{ fontSize: '0.675rem', fontWeight: 700, color: '#10b981', display: 'flex', alignItems: 'center', gap: '5px', whiteSpace: 'nowrap' }}>
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 8px #10b981' }} />
           <span>{Math.min(detectionStep, 5)}/5 DETECTED</span>
         </div>
@@ -89,17 +91,7 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
       {/* ----------------------------------------------------------------------- */}
       {/* 5 Distinct Shoes with Stroke-Drawn Bounding Boxes & Confidence Chips     */}
       {/* ----------------------------------------------------------------------- */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 20,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '8px',
-          alignItems: 'center',
-          margin: '12px 0',
-        }}
-      >
+      <div className="cv-boxes-grid">
         {CINEMATIC_PRODUCTS.map((prod, idx) => {
           const isDetected = detectionStep > idx;
           return (
@@ -139,16 +131,17 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
                     transition={{ duration: 0.2 }}
                     style={{
                       position: 'absolute',
-                      top: '-12px',
-                      left: '6px',
+                      top: '-11px',
+                      left: '4px',
                       background: '#10b981',
                       color: '#022c22',
-                      fontSize: '0.525rem',
+                      fontSize: '0.5rem',
                       fontWeight: 900,
-                      padding: '1px 6px',
+                      padding: '1px 4px',
                       borderRadius: '3px',
-                      letterSpacing: '0.04em',
+                      letterSpacing: '0.02em',
                       boxShadow: '0 2px 6px rgba(0,0,0,0.4)',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     {prod.confidence}
@@ -160,7 +153,7 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
               <div
                 style={{
                   width: '100%',
-                  height: '66px',
+                  height: '56px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -191,12 +184,12 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
               <div
                 style={{
                   marginTop: '4px',
-                  fontSize: '0.6rem',
+                  fontSize: 'clamp(0.5rem, 1.4vw, 0.6rem)',
                   fontWeight: 800,
                   color: isDetected ? '#38bdf8' : '#64748b',
                   textAlign: 'center',
                   lineHeight: 1.1,
-                  maxWidth: '92%',
+                  maxWidth: '96%',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
@@ -215,26 +208,46 @@ export const ComputerVisionProcessor: React.FC<ComputerVisionProcessorProps> = (
           position: 'relative',
           zIndex: 20,
           background: 'rgba(15, 23, 42, 0.9)',
-          padding: '8px 14px',
+          padding: '8px 12px',
           borderRadius: '10px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
           border: '1px solid rgba(255,255,255,0.08)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.725rem', color: '#cbd5e1' }}>
-          <Sparkles size={14} color="#10b981" />
+          <Sparkles size={14} color="#10b981" style={{ flexShrink: 0 }} />
           <span>
             {isEnhancing
               ? 'Studio Lighting Pass: Glare removed, studio shadows rendered.'
               : 'Individual product boundaries extracted from 1 photograph.'}
           </span>
         </div>
-        <div style={{ fontSize: '0.65rem', fontWeight: 800, color: '#38bdf8', letterSpacing: '0.04em' }}>
+        <div style={{ fontSize: '0.65rem', fontWeight: 800, color: '#38bdf8', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
           0.8s INFERENCE
         </div>
       </div>
+
+      <style jsx>{`
+        .cv-boxes-grid {
+          position: relative;
+          z-index: 20;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 8px;
+          align-items: center;
+          margin: 12px 0;
+        }
+        @media (max-width: 640px) {
+          .cv-boxes-grid {
+            gap: 4px;
+            margin: 8px 0;
+          }
+        }
+      `}</style>
     </div>
   );
 };

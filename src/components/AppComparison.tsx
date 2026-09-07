@@ -68,7 +68,7 @@ export default function AppComparison() {
         background: 'var(--bg-card)',
         border: '1px solid var(--border-subtle)',
         borderRadius: 'var(--radius-xl)',
-        padding: '36px 28px',
+        padding: 'clamp(18px, 4vw, 36px) clamp(14px, 3vw, 28px)',
       }}
     >
       {/* Switcher Header */}
@@ -141,7 +141,7 @@ export default function AppComparison() {
         key={activeTab}
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
           gap: '32px',
           alignItems: 'center',
         }}
@@ -220,7 +220,7 @@ export default function AppComparison() {
             background: 'var(--bg-secondary)',
             border: '1px solid var(--border-medium)',
             borderRadius: 'var(--radius-xl)',
-            padding: '24px',
+            padding: 'clamp(16px, 3vw, 24px)',
             boxShadow: 'var(--shadow-md)',
           }}
         >

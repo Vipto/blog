@@ -35,14 +35,16 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
           zIndex: 20,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <Compass size={15} color="#38bdf8" />
           </div>
-          <span style={{ fontSize: '0.775rem', fontWeight: 800, color: '#ffffff', letterSpacing: '0.04em' }}>
+          <span style={{ fontSize: 'clamp(0.6875rem, 2vw, 0.775rem)', fontWeight: 800, color: '#ffffff', letterSpacing: '0.04em' }}>
             VIPTO HYPERLOCAL DISCOVERY • 5 KM VICINITY
           </span>
         </div>
@@ -55,6 +57,7 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
             padding: '4px 10px',
             borderRadius: '14px',
             border: '1px solid rgba(16, 185, 129, 0.35)',
+            whiteSpace: 'nowrap',
           }}
         >
           GPS ACTIVE • 1.8 KM TO STORE
@@ -75,8 +78,14 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
           overflow: 'hidden',
         }}
       >
-        {/* Vector Street Geometry & Building Blocks */}
-        <svg width="100%" height="100%" style={{ position: 'absolute', inset: 0, opacity: 0.5 }}>
+        {/* Vector Street Geometry & Building Blocks with ViewBox Scaling */}
+        <svg 
+          viewBox="0 0 700 200"
+          preserveAspectRatio="xMidYMid meet"
+          width="100%" 
+          height="100%" 
+          style={{ position: 'absolute', inset: 0, opacity: 0.5 }}
+        >
           <defs>
             <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#38bdf8" />
@@ -108,66 +117,67 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
           />
         </svg>
 
-        {/* Pulsing 5 km Radar Wave Ping */}
+        {/* Pulsing 5 km Radar Wave Ping (Proportional Percentage Coordinates) */}
         <motion.div
           animate={{ scale: [1, 1.5], opacity: [0.7, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
           style={{
             position: 'absolute',
-            left: '440px',
-            top: '68px',
-            width: '120px',
-            height: '120px',
-            marginLeft: '-60px',
-            marginTop: '-60px',
+            left: '62.85%',
+            top: '34%',
+            width: '100px',
+            height: '100px',
+            transform: 'translate(-50%, -50%)',
             borderRadius: '50%',
             border: '2px solid #38bdf8',
             pointerEvents: 'none',
           }}
         />
 
-        {/* Customer Location Dot */}
+        {/* Customer Location Dot (Proportional Percentage Coordinates) */}
         <div
           style={{
             position: 'absolute',
-            left: '180px',
-            top: '120px',
+            left: '25.7%',
+            top: '60%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
             zIndex: 30,
+            whiteSpace: 'nowrap',
           }}
         >
-          <span style={{ width: '13px', height: '13px', borderRadius: '50%', background: '#38bdf8', boxShadow: '0 0 12px #38bdf8', border: '2px solid #ffffff' }} />
-          <span style={{ fontSize: '0.65rem', color: '#ffffff', fontWeight: 800, background: 'rgba(15, 23, 42, 0.92)', padding: '3px 8px', borderRadius: '5px', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
+          <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#38bdf8', boxShadow: '0 0 12px #38bdf8', border: '2px solid #ffffff', flexShrink: 0 }} />
+          <span style={{ fontSize: '0.625rem', color: '#ffffff', fontWeight: 800, background: 'rgba(15, 23, 42, 0.92)', padding: '2px 6px', borderRadius: '5px', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
             Customer (You)
           </span>
         </div>
 
-        {/* Local Store Destination Pin */}
+        {/* Local Store Destination Pin (Proportional Percentage Coordinates) */}
         <div
           style={{
             position: 'absolute',
-            left: '440px',
-            top: '68px',
+            left: '62.85%',
+            top: '34%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            padding: '5px 12px',
+            gap: '5px',
+            padding: '4px 10px',
             borderRadius: '20px',
             background: '#2563eb',
             color: '#ffffff',
-            fontSize: '0.725rem',
+            fontSize: '0.675rem',
             fontWeight: 800,
             boxShadow: '0 4px 16px rgba(37, 99, 235, 0.5)',
             border: '1.5px solid #60a5fa',
             zIndex: 30,
+            whiteSpace: 'nowrap',
           }}
         >
-          <Store size={13} />
-          <span>Apex Footwear Store</span>
+          <Store size={12} />
+          <span>Apex Footwear</span>
         </div>
       </div>
 
@@ -178,24 +188,25 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
         style={{
           background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)',
           borderRadius: '16px',
-          padding: '14px 16px',
+          padding: '12px 14px',
           border: '1px solid rgba(255, 255, 255, 0.1)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '12px',
+          flexWrap: 'wrap',
+          gap: '10px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ width: '58px', height: '44px', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: '180px', flex: '1 1 200px' }}>
+          <div style={{ width: '52px', height: '40px', flexShrink: 0 }}>
             <ShoeNitroRunner isRaw={false} />
           </div>
           <div>
-            <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.1 }}>
+            <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.15 }}>
               AeroPulse Nitro Runner
             </div>
-            <div style={{ fontSize: '0.7rem', color: '#94a3b8', marginTop: '3px' }}>
-              Confirmed In Stock at Apex Footwear • 1.8 km (14 min walk)
+            <div style={{ fontSize: '0.675rem', color: '#94a3b8', marginTop: '2px' }}>
+              In Stock at Apex Footwear • 1.8 km
             </div>
           </div>
         </div>
@@ -205,18 +216,20 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
           style={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '6px',
-            padding: '8px 16px',
-            borderRadius: '12px',
+            padding: '7px 14px',
+            borderRadius: '10px',
             background: isNavigating ? '#10b981' : '#2563eb',
             color: '#ffffff',
-            fontSize: '0.775rem',
+            fontSize: '0.725rem',
             fontWeight: 800,
             flexShrink: 0,
             boxShadow: '0 4px 14px rgba(37, 99, 235, 0.35)',
+            whiteSpace: 'nowrap',
           }}
         >
-          <Navigation size={14} />
+          <Navigation size={13} />
           <span>{isNavigating ? 'Navigating to Store' : 'Walk In & Pick Up'}</span>
         </div>
       </div>
@@ -228,13 +241,14 @@ export const CustomerMapDiscovery: React.FC<CustomerMapDiscoveryProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           gap: '6px',
-          fontSize: '0.7rem',
+          fontSize: '0.675rem',
           color: '#10b981',
           fontWeight: 700,
+          textAlign: 'center',
         }}
       >
-        <ShieldCheck size={15} />
-        <span>Physical Stock Confirmed at Store Counter • Walk In &amp; Try Before Buying</span>
+        <ShieldCheck size={14} style={{ flexShrink: 0 }} />
+        <span>Physical Stock Confirmed at Counter • Walk In &amp; Try Before Buying</span>
       </div>
     </div>
   );

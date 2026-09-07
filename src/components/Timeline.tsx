@@ -51,7 +51,7 @@ export default function Timeline() {
         background: 'var(--bg-card)',
         border: '1px solid var(--border-subtle)',
         borderRadius: 'var(--radius-xl)',
-        padding: '36px 28px',
+        padding: 'clamp(18px, 4vw, 36px) clamp(14px, 3vw, 28px)',
       }}
     >
       <div style={{ textAlign: 'center', marginBottom: '36px' }}>
@@ -68,7 +68,7 @@ export default function Timeline() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 105px), 1fr))',
           gap: '8px',
           marginBottom: '28px',
         }}
@@ -137,7 +137,7 @@ export default function Timeline() {
           background: 'var(--bg-secondary)',
           border: '1px solid var(--border-medium)',
           borderRadius: 'var(--radius-lg)',
-          padding: '24px 28px',
+          padding: 'clamp(16px, 3.5vw, 24px) clamp(14px, 3vw, 28px)',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -145,7 +145,7 @@ export default function Timeline() {
           gap: '20px',
         }}
       >
-        <div style={{ flex: '1 1 320px' }}>
+        <div style={{ flex: '1 1 min(100%, 280px)' }}>
           <div
             style={{
               fontSize: '0.8rem',

@@ -41,9 +41,9 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
           initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="hand-grip-layer"
           style={{
             position: 'absolute',
-            inset: '-20px -32px -45px -32px',
             pointerEvents: 'none',
             zIndex: 40,
           }}
@@ -52,10 +52,10 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
           <div
             style={{
               position: 'absolute',
-              left: '-10px',
+              left: '-8px',
               top: '32%',
-              width: '26px',
-              height: '96px',
+              width: '24px',
+              height: '90px',
               borderRadius: '14px 0 0 14px',
               background: 'linear-gradient(90deg, #92400e 0%, #b45309 30%, #d97706 70%, #f59e0b 100%)',
               boxShadow: '-6px 6px 16px rgba(0,0,0,0.35)',
@@ -72,10 +72,10 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
             transition={{ duration: 0.15 }}
             style={{
               position: 'absolute',
-              right: '10px',
+              right: '8px',
               bottom: '16px',
-              width: '46px',
-              height: '56px',
+              width: '42px',
+              height: '52px',
               borderRadius: '26px 22px 22px 26px',
               background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 85%, #78350f 100%)',
               boxShadow: '6px 8px 20px rgba(0,0,0,0.4)',
@@ -86,10 +86,10 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
             <div
               style={{
                 position: 'absolute',
-                top: '9px',
-                left: '9px',
-                width: '20px',
-                height: '16px',
+                top: '8px',
+                left: '8px',
+                width: '18px',
+                height: '14px',
                 borderRadius: '8px',
                 background: 'rgba(255,255,255,0.4)',
                 boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.7)',
@@ -108,13 +108,14 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
           y: isCapturing ? [0, 2, -2, 0] : 0,
         }}
         transition={{ duration: 0.22 }}
+        className="phone-frame"
         style={{
           position: 'relative',
           width: '100%',
-          borderRadius: '40px',
+          borderRadius: '36px',
           background: 'linear-gradient(145deg, #334155 0%, #1e293b 40%, #0f172a 100%)',
-          padding: '12px',
-          border: '2.5px solid #64748b',
+          padding: '10px',
+          border: '2px solid #64748b',
           boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 3px rgba(255,255,255,0.3)',
           overflow: 'hidden',
           zIndex: 20,
@@ -124,23 +125,23 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
         <div
           style={{
             position: 'absolute',
-            top: '18px',
+            top: '16px',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '94px',
-            height: '24px',
+            width: '88px',
+            height: '22px',
             borderRadius: '16px',
             background: '#000000',
             zIndex: 60,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0 12px',
+            padding: '0 10px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.6)',
           }}
         >
           {/* Front Camera Lens Reflection */}
-          <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#1e293b', border: '1.5px solid #475569' }} />
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#1e293b', border: '1.5px solid #475569' }} />
           {/* Status Sensor Indicator */}
           <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981' }} />
         </div>
@@ -152,8 +153,8 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
           style={{
             position: 'relative',
             width: '100%',
-            minHeight: '340px',
-            borderRadius: '28px',
+            minHeight: '320px',
+            borderRadius: '24px',
             background: '#020617',
             overflow: 'hidden',
             display: 'flex',
@@ -195,8 +196,8 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
                   top: '40%',
                   left: '48%',
                   transform: 'translate(-50%, -50%)',
-                  width: '54px',
-                  height: '54px',
+                  width: '50px',
+                  height: '50px',
                   border: '1.5px solid #facc15',
                   borderRadius: '6px',
                   pointerEvents: 'none',
@@ -207,7 +208,7 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
                 }}
               >
                 {/* Exposure Sun Icon Indicator */}
-                <div style={{ position: 'absolute', right: '-18px', top: '50%', transform: 'translateY(-50%)' }}>
+                <div style={{ position: 'absolute', right: '-16px', top: '50%', transform: 'translateY(-50%)' }}>
                   <Sun size={12} color="#facc15" />
                 </div>
               </motion.div>
@@ -240,7 +241,7 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
               style={{
                 position: 'relative',
                 zIndex: 30,
-                padding: '12px 18px 16px',
+                padding: '10px 14px 14px',
                 background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.88) 100%)',
                 display: 'flex',
                 alignItems: 'center',
@@ -252,11 +253,11 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
+                  gap: '5px',
                   background: 'rgba(255,255,255,0.12)',
-                  padding: '4px 12px',
+                  padding: '3px 10px',
                   borderRadius: '20px',
-                  fontSize: '0.675rem',
+                  fontSize: '0.65rem',
                   fontWeight: 700,
                   color: '#ffffff',
                   backdropFilter: 'blur(8px)',
@@ -274,8 +275,8 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
                 animate={isCapturing ? { scale: 0.91 } : { scale: 1 }}
                 onClick={onShutterPress}
                 style={{
-                  width: '56px',
-                  height: '56px',
+                  width: '50px',
+                  height: '50px',
                   borderRadius: '50%',
                   background: '#ffffff',
                   border: '4px solid rgba(255,255,255,0.45)',
@@ -302,13 +303,14 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
               {/* 1 Photo Batch Tag */}
               <div
                 style={{
-                  fontSize: '0.675rem',
+                  fontSize: '0.65rem',
                   fontWeight: 800,
                   color: '#38bdf8',
                   background: 'rgba(56, 189, 248, 0.16)',
-                  padding: '4px 12px',
+                  padding: '3px 10px',
                   borderRadius: '14px',
                   border: '1px solid rgba(56, 189, 248, 0.35)',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 1 PHOTO • 5 SHOES
@@ -317,6 +319,22 @@ export const SellerPhoneDevice: React.FC<SellerPhoneDeviceProps> = ({
           )}
         </div>
       </motion.div>
+
+      <style jsx>{`
+        .hand-grip-layer {
+          inset: -20px -32px -45px -32px;
+        }
+        @media (max-width: 640px) {
+          .hand-grip-layer {
+            inset: -10px -12px -30px -12px;
+          }
+        }
+        @media (max-width: 440px) {
+          .hand-grip-layer {
+            inset: -6px -4px -20px -4px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

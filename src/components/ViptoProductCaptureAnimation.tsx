@@ -59,57 +59,50 @@ export default function ViptoProductCaptureAnimation() {
     if (hasReducedMotion || !isPlaying) return;
     clearTimers();
 
-    // Scene 1: (0.0s – 3.0s) Real Shoe Shop Display Shelf
+    // Scene 1: (0.0s – 3.5s) Real Shoe Shop Display Shelf
     setActiveScene(0);
     setIsShutterFlashing(false);
     setDetectionStep(0);
     setIsEnhancing(false);
 
-    // Scene 2: (3.0s – 6.0s) Seller Holds Smartphone & Frames 5 Shoes
+    // Scene 2: (3.5s – 7.5s) ONE Single Photo Shutter Capture (Framing + Shutter Flash)
     schedule(() => {
       setActiveScene(1);
-    }, 3000);
-
-    // Scene 3: (6.0s – 8.0s) ONE Single Photo Shutter Capture
+      setIsShutterFlashing(false);
+    }, 3500);
     schedule(() => {
-      setActiveScene(2);
       setIsShutterFlashing(true);
-    }, 6000);
+    }, 5500);
     schedule(() => {
       setIsShutterFlashing(false);
-    }, 6200);
+    }, 5750);
 
-    // Scene 4: (8.0s – 11.0s) Computer Vision AI Detection & Studio Enhancement
+    // Scene 3: (7.5s – 11.0s) Computer Vision AI Detection & Studio Enhancement
+    schedule(() => {
+      setActiveScene(2);
+      setDetectionStep(1);
+    }, 7500);
+    schedule(() => setDetectionStep(2), 7900);
+    schedule(() => setDetectionStep(3), 8300);
+    schedule(() => setDetectionStep(4), 8700);
+    schedule(() => setDetectionStep(5), 9100);
+    schedule(() => setIsEnhancing(true), 9600);
+
+    // Scene 4: (11.0s – 14.0s) Automatic Catalog Creation (5 Products, Zero Prices)
     schedule(() => {
       setActiveScene(3);
-      setDetectionStep(1);
-    }, 8000);
-    schedule(() => setDetectionStep(2), 8400);
-    schedule(() => setDetectionStep(3), 8800);
-    schedule(() => setDetectionStep(4), 9200);
-    schedule(() => setDetectionStep(5), 9600);
-    schedule(() => setIsEnhancing(true), 10000);
-
-    // Scene 5: (11.0s – 14.0s) Automatic Catalog Creation (5 Products, Zero Prices)
-    schedule(() => {
-      setActiveScene(4);
       setIsEnhancing(false);
     }, 11000);
 
-    // Scene 6: (14.0s – 17.0s) Nearby Customer Discovery (5 km Radius)
+    // Scene 5: (14.0s – 17.5s) Nearby Customer 5km Local Discovery & GPS Walk-in Route
     schedule(() => {
-      setActiveScene(5);
+      setActiveScene(4);
     }, 14000);
 
-    // Scene 7: (17.0s – 20.0s) GPS Turn-by-Turn Route to Store & Loop Back
-    schedule(() => {
-      setActiveScene(6);
-    }, 17000);
-
-    // Seamless 20.0s Cinematic Loop
+    // Seamless 17.5s Cinematic Loop
     schedule(() => {
       runCinematicTimeline();
-    }, 20000);
+    }, 17500);
 
   }, [hasReducedMotion, isPlaying]);
 
@@ -121,10 +114,11 @@ export default function ViptoProductCaptureAnimation() {
   const handleManualSceneSelect = (index: number) => {
     clearTimers();
     setActiveScene(index);
-    if (index === 2) {
-      setIsShutterFlashing(true);
-      setTimeout(() => setIsShutterFlashing(false), 200);
-    } else if (index === 3) {
+    if (index === 1) {
+      setIsShutterFlashing(false);
+      schedule(() => setIsShutterFlashing(true), 600);
+      schedule(() => setIsShutterFlashing(false), 850);
+    } else if (index === 2) {
       setDetectionStep(5);
       setIsEnhancing(true);
     }
@@ -151,7 +145,7 @@ export default function ViptoProductCaptureAnimation() {
           <span>1 PHOTO CAPTURE → 5 VERIFIED LOCAL LISTINGS</span>
         </div>
         <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '10px' }}>
-          Physical Products in Store $\rightarrow$ Live on Vipto in Seconds
+          Physical Products in Store → Live on Vipto in Seconds
         </h3>
         <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '620px', margin: '0 auto 24px', lineHeight: 1.6 }}>
           Local shopkeepers take one single photo of their physical display. Vipto isolates each product, generates professional catalog entries with zero price barriers, and connects nearby customers within 5 km.
@@ -173,12 +167,10 @@ export default function ViptoProductCaptureAnimation() {
 
   const SCENE_STORYBOARD = [
     { title: '01 • REAL SHOE SHOP', desc: '5 physical shoes on authentic retail display shelf' },
-    { title: '02 • SMARTPHONE FRAMING', desc: 'Seller frames all 5 products at once with phone' },
-    { title: '03 • ONE PHOTO CAPTURE', desc: 'Single shutter tap captures all 5 items together' },
-    { title: '04 • COMPUTER VISION AI', desc: 'Sub-pixel segmentation & studio lighting cleanup' },
-    { title: '05 • AUTO CATALOG CREATED', desc: '5 verified listings live in seller portal (No Prices)' },
-    { title: '06 • 5KM LOCAL DISCOVERY', desc: 'Nearby customer finds item in 5 km radius' },
-    { title: '07 • WALK-IN STORE VISIT', desc: 'Live GPS route to Apex Sports • Try & buy in-store' },
+    { title: '02 • ONE PHOTO CAPTURE', desc: 'Seller frames physical display & captures all 5 items with 1 photo' },
+    { title: '03 • COMPUTER VISION AI', desc: 'Sub-pixel segmentation & studio lighting cleanup' },
+    { title: '04 • AUTO CATALOG CREATED', desc: '5 verified listings live in seller portal (No Prices)' },
+    { title: '05 • LOCAL DISCOVERY & VISIT', desc: 'Nearby customer finds item in 5 km radius with live GPS route' },
   ];
 
   return (
@@ -194,21 +186,19 @@ export default function ViptoProductCaptureAnimation() {
     >
       {/* Outer Studio Showcase Stage Box */}
       <div
+        className="animation-stage-box"
         style={{
           position: 'relative',
           width: '100%',
-          borderRadius: '28px',
           background: 'linear-gradient(180deg, var(--bg-card) 0%, var(--bg-secondary) 100%)',
           backdropFilter: 'blur(20px) saturate(180%)',
           WebkitBackdropFilter: 'blur(20px) saturate(180%)',
           border: '1px solid var(--border-medium)',
-          padding: '24px 20px 20px',
           boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px var(--border-subtle)',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          minHeight: '520px',
         }}
       >
         {/* Ambient Commercial Stage Lighting Cones */}
@@ -246,9 +236,9 @@ export default function ViptoProductCaptureAnimation() {
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '12px',
-            marginBottom: '16px',
-            paddingBottom: '14px',
+            gap: '10px',
+            marginBottom: '14px',
+            paddingBottom: '12px',
             borderBottom: '1px solid var(--border-subtle)',
           }}
         >
@@ -260,8 +250,9 @@ export default function ViptoProductCaptureAnimation() {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  background: activeScene >= 4 ? 'var(--accent-emerald)' : 'var(--accent-primary)',
-                  boxShadow: `0 0 10px ${activeScene >= 4 ? 'var(--accent-emerald)' : 'var(--accent-primary)'}`,
+                  background: activeScene >= 3 ? 'var(--accent-emerald)' : 'var(--accent-primary)',
+                  boxShadow: `0 0 10px ${activeScene >= 3 ? 'var(--accent-emerald)' : 'var(--accent-primary)'}`,
+                  flexShrink: 0,
                 }}
               />
               <span style={{ fontSize: '0.8125rem', fontWeight: 800, letterSpacing: '0.04em', color: 'var(--text-primary)' }}>
@@ -329,13 +320,13 @@ export default function ViptoProductCaptureAnimation() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '360px',
+            minHeight: '340px',
             overflow: 'hidden',
           }}
         >
           <AnimatePresence mode="wait">
 
-            {/* SCENE 1: (0.0s – 3.0s) Real Shoe Shop Display Shelf */}
+            {/* SCENE 1: (0.0s – 3.5s) Real Shoe Shop Display Shelf */}
             {activeScene === 0 && (
               <motion.div
                 key="scene-1"
@@ -349,7 +340,7 @@ export default function ViptoProductCaptureAnimation() {
               </motion.div>
             )}
 
-            {/* SCENE 2: (3.0s – 6.0s) Seller Holds Phone & Frames 5 Shoes */}
+            {/* SCENE 2: (3.5s – 7.5s) ONE Single Photo Shutter Capture (Framing + Shutter Flash) */}
             {activeScene === 1 && (
               <motion.div
                 key="scene-2"
@@ -359,32 +350,16 @@ export default function ViptoProductCaptureAnimation() {
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 style={{ width: '100%', maxWidth: '720px' }}
               >
-                <SellerPhoneDevice cameraMode="photo" showHandGrip={true} isCapturing={false}>
-                  <RealisticShopEnvironment isZoomedIn={true} showRawLighting={true} />
-                </SellerPhoneDevice>
-              </motion.div>
-            )}
-
-            {/* SCENE 3: (6.0s – 8.0s) ONE Single Photo Shutter Capture */}
-            {activeScene === 2 && (
-              <motion.div
-                key="scene-3"
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.35 }}
-                style={{ width: '100%', maxWidth: '720px' }}
-              >
                 <SellerPhoneDevice cameraMode="photo" showHandGrip={true} isCapturing={isShutterFlashing}>
                   <RealisticShopEnvironment isZoomedIn={true} showRawLighting={true} />
                 </SellerPhoneDevice>
               </motion.div>
             )}
 
-            {/* SCENE 4: (8.0s – 11.0s) Computer Vision AI Segmentation & Studio Cleanup */}
-            {activeScene === 3 && (
+            {/* SCENE 3: (7.5s – 11.0s) Computer Vision AI Segmentation & Studio Cleanup */}
+            {activeScene === 2 && (
               <motion.div
-                key="scene-4"
+                key="scene-3"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
@@ -395,10 +370,10 @@ export default function ViptoProductCaptureAnimation() {
               </motion.div>
             )}
 
-            {/* SCENE 5: (11.0s – 14.0s) Automatic Catalog Creation (5 Items, Zero Prices) */}
-            {activeScene === 4 && (
+            {/* SCENE 4: (11.0s – 14.0s) Automatic Catalog Creation (5 Items, Zero Prices) */}
+            {activeScene === 3 && (
               <motion.div
-                key="scene-5"
+                key="scene-4"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
@@ -409,24 +384,10 @@ export default function ViptoProductCaptureAnimation() {
               </motion.div>
             )}
 
-            {/* SCENE 6: (14.0s – 17.0s) Nearby Customer Discovery (5 km Vicinity) */}
-            {activeScene === 5 && (
+            {/* SCENE 5: (14.0s – 17.5s) Nearby Customer 5km Local Discovery & GPS Walk-in Route */}
+            {activeScene === 4 && (
               <motion.div
-                key="scene-6"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.4 }}
-                style={{ width: '100%', maxWidth: '740px' }}
-              >
-                <CustomerMapDiscovery isNavigating={false} />
-              </motion.div>
-            )}
-
-            {/* SCENE 7: (17.0s – 20.0s) GPS Navigation & Walk-in Store Arrival */}
-            {activeScene === 6 && (
-              <motion.div
-                key="scene-7"
+                key="scene-5"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.02 }}
@@ -447,18 +408,12 @@ export default function ViptoProductCaptureAnimation() {
           style={{
             position: 'relative',
             zIndex: 20,
-            marginTop: '16px',
-            paddingTop: '12px',
+            marginTop: '14px',
+            paddingTop: '10px',
             borderTop: '1px solid var(--border-subtle)',
           }}
         >
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(7, 1fr)',
-              gap: '6px',
-            }}
-          >
+          <div className="scrubber-grid">
             {SCENE_STORYBOARD.map((item, idx) => {
               const isActive = activeScene === idx;
               return (
@@ -470,11 +425,11 @@ export default function ViptoProductCaptureAnimation() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '4px',
+                    gap: '3px',
                     background: isActive ? 'var(--bg-tertiary)' : 'transparent',
                     border: 'none',
-                    borderRadius: '8px',
-                    padding: '4px 2px',
+                    borderRadius: '6px',
+                    padding: '3px 2px',
                     cursor: 'pointer',
                     outline: 'none',
                   }}
@@ -512,6 +467,29 @@ export default function ViptoProductCaptureAnimation() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .animation-stage-box {
+          border-radius: 28px;
+          padding: 24px 20px 20px;
+          min-height: 520px;
+        }
+        .scrubber-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 6px;
+        }
+        @media (max-width: 640px) {
+          .animation-stage-box {
+            border-radius: 20px;
+            padding: 16px 12px 14px;
+            min-height: 480px;
+          }
+          .scrubber-grid {
+            gap: 4px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

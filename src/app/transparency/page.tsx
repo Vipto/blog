@@ -54,7 +54,7 @@ export default function TransparencyPage() {
         </div>
 
         {/* Explicit Boundary Guidelines */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px', marginBottom: '40px' }}>
           <div className="card">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', color: 'var(--accent-emerald)' }}>
               <CheckCircle2 size={18} />
@@ -121,11 +121,11 @@ export default function TransparencyPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-secondary btn-sm"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', maxWidth: '100%', wordBreak: 'break-all', textAlign: 'left' }}
           >
-            <FileText size={16} />
-            <span>https://github.com/Vipto/.github/blob/main/legal.md</span>
-            <ExternalLink size={13} />
+            <FileText size={16} style={{ flexShrink: 0 }} />
+            <span style={{ overflowWrap: 'anywhere', wordBreak: 'break-all' }}>https://github.com/Vipto/.github/blob/main/legal.md</span>
+            <ExternalLink size={13} style={{ flexShrink: 0 }} />
           </a>
         </div>
 

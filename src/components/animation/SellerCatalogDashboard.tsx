@@ -29,12 +29,14 @@ export const SellerCatalogDashboard: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
           paddingBottom: '12px',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', boxShadow: '0 4px 10px rgba(37, 99, 235, 0.4)' }}>
+          <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', boxShadow: '0 4px 10px rgba(37, 99, 235, 0.4)', flexShrink: 0 }}>
             <Store size={18} />
           </div>
           <div>
@@ -59,6 +61,7 @@ export const SellerCatalogDashboard: React.FC = () => {
             border: '1px solid rgba(16, 185, 129, 0.35)',
             fontSize: '0.675rem',
             fontWeight: 700,
+            whiteSpace: 'nowrap',
           }}
         >
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }} />
@@ -69,14 +72,7 @@ export const SellerCatalogDashboard: React.FC = () => {
       {/* ----------------------------------------------------------------------- */}
       {/* 5 Product Catalog Cards (Strictly Zero Prices)                          */}
       {/* ----------------------------------------------------------------------- */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '8px',
-          alignItems: 'stretch',
-        }}
-      >
+      <div className="catalog-grid">
         {CINEMATIC_PRODUCTS.map((prod, idx) => (
           <motion.div
             key={prod.id}
@@ -103,7 +99,7 @@ export const SellerCatalogDashboard: React.FC = () => {
             <div
               style={{
                 width: '100%',
-                height: '66px',
+                height: '60px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -172,23 +168,46 @@ export const SellerCatalogDashboard: React.FC = () => {
         style={{
           background: 'linear-gradient(90deg, rgba(37,99,235,0.18) 0%, rgba(16,185,129,0.18) 100%)',
           border: '1px solid rgba(56, 189, 248, 0.3)',
-          padding: '10px 16px',
+          padding: '10px 14px',
           borderRadius: '12px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Globe size={16} color="#38bdf8" />
-          <span style={{ fontSize: '0.775rem', fontWeight: 700, color: '#f8fafc' }}>
-            1 Photo Uploaded $\rightarrow$ 5 Live Verified Catalog Items Published
+          <Globe size={16} color="#38bdf8" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: 'clamp(0.6875rem, 1.8vw, 0.775rem)', fontWeight: 700, color: '#f8fafc' }}>
+            1 Photo Uploaded → 5 Live Verified Catalog Items Published
           </span>
         </div>
-        <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#10b981' }}>
+        <div style={{ fontSize: '0.675rem', fontWeight: 800, color: '#10b981', whiteSpace: 'nowrap' }}>
           5 KM RADIUS ACTIVE
         </div>
       </div>
+
+      <style jsx>{`
+        .catalog-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 8px;
+          align-items: stretch;
+        }
+        @media (max-width: 640px) {
+          .catalog-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+          }
+        }
+        @media (max-width: 420px) {
+          .catalog-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

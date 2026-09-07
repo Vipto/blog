@@ -181,7 +181,7 @@ export default function JournalFilter({ articles, categories }: JournalFilterPro
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
             gap: '28px',
           }}
         >

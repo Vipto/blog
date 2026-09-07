@@ -84,7 +84,7 @@ export default function JoinPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
               gap: '20px',
             }}
           >
@@ -178,7 +178,7 @@ export default function JoinPage() {
               background: 'var(--bg-secondary)',
               border: '1px solid var(--border-medium)',
               borderRadius: 'var(--radius-xl)',
-              padding: '40px 32px',
+              padding: 'clamp(24px, 5vw, 40px) clamp(16px, 4vw, 32px)',
               textAlign: 'center',
             }}
           >

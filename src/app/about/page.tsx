@@ -98,7 +98,7 @@ export default function AboutPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
               gap: '24px',
             }}
           >
@@ -136,7 +136,7 @@ export default function AboutPage() {
               Who Vipto is Built For
             </h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '32px' }}>
               {/* For Customers */}
               <div>
                 <h3 style={{ fontSize: '1.15rem', marginBottom: '12px', color: 'var(--text-primary)' }}>
@@ -204,7 +204,7 @@ export default function AboutPage() {
         <section style={{ marginBottom: '40px' }}>
           <div
             style={{
-              padding: '28px',
+              padding: 'clamp(18px, 4vw, 28px)',
               borderRadius: 'var(--radius-lg)',
               background: 'var(--bg-secondary)',
               border: '1px solid var(--border-subtle)',
