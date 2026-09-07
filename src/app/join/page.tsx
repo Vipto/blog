@@ -153,12 +153,12 @@ export default function JoinPage() {
                     <span
                       key={i}
                       style={{
-                        fontSize: '0.8rem',
-                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.8125rem',
+                        fontWeight: 500,
                         padding: '4px 10px',
                         background: 'var(--bg-secondary)',
                         borderRadius: 'var(--radius-sm)',
-                        color: 'var(--text-muted)',
+                        color: 'var(--text-secondary)',
                         border: '1px solid var(--border-subtle)',
                       }}
                     >

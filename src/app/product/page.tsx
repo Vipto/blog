@@ -47,7 +47,6 @@ export default function ProductPage() {
                 background: 'var(--accent-primary-glow)',
                 color: 'var(--accent-primary)',
                 fontSize: '0.85rem',
-                fontFamily: 'var(--font-mono)',
                 fontWeight: 600,
               }}
             >

@@ -71,7 +71,6 @@ export default function UpdatesPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span
                     style={{
-                      fontFamily: 'var(--font-mono)',
                       fontSize: '0.9rem',
                       fontWeight: 700,
                       color: 'var(--text-primary)',
@@ -85,9 +84,9 @@ export default function UpdatesPage() {
                 </div>
                 <span
                   style={{
-                    fontSize: '0.8rem',
+                    fontSize: '0.8125rem',
                     color: 'var(--text-muted)',
-                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 600,
                   }}
                 >
                   {update.tag}
@@ -135,7 +134,6 @@ export default function UpdatesPage() {
                   <div
                     style={{
                       fontSize: '0.8rem',
-                      fontFamily: 'var(--font-mono)',
                       fontWeight: 700,
                       color: 'var(--accent-primary)',
                       textTransform: 'uppercase',
@@ -173,9 +171,8 @@ export default function UpdatesPage() {
                   <div
                     style={{
                       fontSize: '0.8rem',
-                      fontFamily: 'var(--font-mono)',
                       fontWeight: 700,
-                      color: '#fbbf24',
+                      color: 'var(--accent-amber)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.04em',
                       marginBottom: '10px',
@@ -199,7 +196,7 @@ export default function UpdatesPage() {
                   >
                     {update.changed.map((item, i) => (
                       <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
-                        <span style={{ color: '#fbbf24' }}>•</span>
+                        <span style={{ color: 'var(--accent-amber)' }}>•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -211,9 +208,8 @@ export default function UpdatesPage() {
                   <div
                     style={{
                       fontSize: '0.8rem',
-                      fontFamily: 'var(--font-mono)',
                       fontWeight: 700,
-                      color: '#34d399',
+                      color: 'var(--accent-emerald)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.04em',
                       marginBottom: '10px',

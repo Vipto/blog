@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'Vipto Initiative', url: 'https://github.com/Vipto' }],
   creator: 'Vipto Initiative',
   metadataBase: new URL('https://vipto.vercel.app'),
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -50,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08090d',
+  themeColor: '#f8fafc',
   width: 'device-width',
   initialScale: 1,
 };
@@ -61,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en">
       <body>
         <Navbar />
         <main style={{ minHeight: 'calc(100vh - 72px - 340px)' }}>

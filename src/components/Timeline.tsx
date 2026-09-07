@@ -118,7 +118,7 @@ export default function Timeline() {
                 style={{
                   fontSize: '0.7rem',
                   color: 'var(--text-muted)',
-                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 600,
                   marginTop: '2px',
                 }}
               >
@@ -149,11 +149,10 @@ export default function Timeline() {
           <div
             style={{
               fontSize: '0.8rem',
-              fontFamily: 'var(--font-mono)',
               color: 'var(--accent-primary)',
-              fontWeight: 600,
+              fontWeight: 700,
               textTransform: 'uppercase',
-              letterSpacing: '0.05em',
+              letterSpacing: '0.04em',
               marginBottom: '4px',
             }}
           >

@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { articles } from '@/data/articles';
-import { Clock, ArrowLeft, ArrowRight, Share2, User, BookOpen, Check } from 'lucide-react';
+import { Clock, ArrowLeft, ArrowRight, User, BookOpen } from 'lucide-react';
+import ReadingProgressBar from '@/components/ReadingProgressBar';
 
 interface ArticlePageProps {
   params: {
@@ -58,8 +59,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div style={{ paddingTop: '40px', paddingBottom: '96px' }}>
       <div className="container-narrow">
-        {/* Back Link */}
-        <div style={{ marginBottom: '32px' }}>
+        {/* Top Controls: Back Link + Share Progress */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px', flexWrap: 'wrap', gap: '12px' }}>
           <Link
             href="/journal"
             className="btn btn-subtle btn-sm"
@@ -68,6 +69,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <ArrowLeft size={16} />
             <span>Back to Vipto Journal</span>
           </Link>
+
+          <ReadingProgressBar />
         </div>
 
         {/* Article Header */}
@@ -90,7 +93,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 gap: '6px',
                 fontSize: '0.85rem',
                 color: 'var(--text-muted)',
-                fontFamily: 'var(--font-mono)',
+                fontWeight: 500,
               }}
             >
               <Clock size={14} />
@@ -113,59 +116,44 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             {article.title}
           </h1>
 
-          <p
-            style={{
-              fontSize: '1.25rem',
-              lineHeight: 1.6,
-              color: 'var(--text-secondary)',
-              borderBottom: '1px solid var(--border-subtle)',
-              paddingBottom: '32px',
-            }}
-          >
-            {article.description}
-          </p>
-
-          {/* Author Block */}
+          {/* Author Byline */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingTop: '20px',
-              flexWrap: 'wrap',
-              gap: '16px',
+              gap: '12px',
+              paddingTop: '16px',
+              borderTop: '1px solid var(--border-subtle)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'var(--bg-tertiary)',
-                  border: '1px solid var(--border-subtle)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--accent-primary)',
-                  fontWeight: 700,
-                }}
-              >
-                <User size={18} />
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'var(--accent-primary-glow)',
+                border: '1px solid var(--border-subtle)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 700,
+                color: 'var(--accent-primary)',
+              }}
+            >
+              {article.author.name.charAt(0)}
+            </div>
+            <div>
+              <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
+                {article.author.name}
               </div>
-              <div>
-                <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
-                  {article.author.name}
-                </div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  {article.author.role}
-                </div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                {article.author.role}
               </div>
             </div>
           </div>
         </header>
 
-        {/* Table of Contents if available */}
+        {/* Table of Contents (if available) */}
         {article.tableOfContents && article.tableOfContents.length > 0 && (
           <div
             style={{
@@ -179,11 +167,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <div
               style={{
                 fontSize: '0.8rem',
-                fontFamily: 'var(--font-mono)',
                 color: 'var(--text-muted)',
                 textTransform: 'uppercase',
-                letterSpacing: '0.06em',
-                fontWeight: 600,
+                letterSpacing: '0.04em',
+                fontWeight: 700,
                 marginBottom: '12px',
                 display: 'flex',
                 alignItems: 'center',
@@ -214,7 +201,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                       gap: '8px',
                     }}
                   >
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent-primary)' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--accent-primary)', fontWeight: 600 }}>
                       0{idx + 1}.
                     </span>
                     <span>{item.title}</span>
@@ -226,18 +213,20 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         )}
 
         {/* Article Body Content */}
-        <main style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
+        <main style={{ fontSize: '1.075rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
           {article.content.lead && (
             <p
               style={{
-                fontSize: '1.15rem',
-                lineHeight: 1.7,
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.25rem',
+                lineHeight: 1.65,
                 color: 'var(--text-primary)',
                 marginBottom: '28px',
-                fontWeight: 500,
+                fontWeight: 400,
+                fontStyle: 'italic',
               }}
             >
-              {article.content.lead}
+              &ldquo;{article.content.lead}&rdquo;
             </p>
           )}
 
@@ -276,7 +265,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                         fontSize: '0.9rem',
                         color: 'var(--text-primary)',
                         marginBottom: '6px',
-                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 700,
                         textTransform: 'uppercase',
                         letterSpacing: '0.04em',
                       }}
@@ -340,7 +329,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 className="card card-hover"
                 style={{ textDecoration: 'none', padding: '20px' }}
               >
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.04em' }}>
                   ← PREVIOUS ARTICLE
                 </span>
                 <h4 style={{ fontSize: '1rem', marginTop: '6px', color: 'var(--text-primary)' }}>
@@ -355,7 +344,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 className="card card-hover"
                 style={{ textDecoration: 'none', padding: '20px', textAlign: 'right' }}
               >
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.04em' }}>
                   NEXT ARTICLE →
                 </span>
                 <h4 style={{ fontSize: '1rem', marginTop: '6px', color: 'var(--text-primary)' }}>

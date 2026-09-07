@@ -102,10 +102,10 @@ export default function WorkflowDiagram() {
               <div
                 style={{
                   fontSize: '0.75rem',
-                  fontFamily: 'var(--font-mono)',
                   color: isActive ? 'var(--accent-primary)' : 'var(--text-muted)',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   marginBottom: '4px',
+                  letterSpacing: '0.02em',
                 }}
               >
                 STEP 0{s.step}
@@ -152,7 +152,6 @@ export default function WorkflowDiagram() {
               color: 'var(--accent-primary)',
               fontSize: '0.8rem',
               fontWeight: 600,
-              fontFamily: 'var(--font-mono)',
               marginBottom: '16px',
             }}
           >
@@ -206,7 +205,7 @@ export default function WorkflowDiagram() {
               borderBottom: '1px solid var(--border-subtle)',
               marginBottom: '16px',
               fontSize: '0.8rem',
-              fontFamily: 'var(--font-mono)',
+              fontWeight: 600,
               color: 'var(--text-muted)',
             }}
           >

@@ -59,7 +59,7 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
               gap: '6px',
               fontSize: '0.8rem',
               color: 'var(--text-muted)',
-              fontFamily: 'var(--font-mono)',
+              fontWeight: 500,
             }}
           >
             <Clock size={13} />

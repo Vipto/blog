@@ -6,6 +6,7 @@ import { focusAreas } from '@/data/focusAreas';
 import ArticleCard from '@/components/ArticleCard';
 import WorkflowDiagram from '@/components/WorkflowDiagram';
 import Timeline from '@/components/Timeline';
+import ViptoProductCaptureAnimation from '@/components/ViptoProductCaptureAnimation';
 import { 
   ArrowRight, 
   Search, 
@@ -18,7 +19,12 @@ import {
   Users,
   Smartphone,
   Cpu,
-  Layers
+  Layers,
+  ShoppingBag,
+  Store,
+  Clock,
+  Zap,
+  HelpCircle
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -38,10 +44,12 @@ export default function HomePage() {
 
   return (
     <div style={{ paddingBottom: '96px' }}>
-      {/* 1. HERO SECTION */}
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION (ANIMATION ABOVE HEADLINE & SUPPORTING COPY)             */}
+      {/* ========================================================================= */}
       <section
         style={{
-          paddingTop: '64px',
+          paddingTop: '40px',
           paddingBottom: '80px',
           borderBottom: '1px solid var(--border-subtle)',
           position: 'relative',
@@ -49,6 +57,12 @@ export default function HomePage() {
         }}
       >
         <div className="container">
+          {/* PRIMARY VISUAL EXPERIENCE: Hero Animation Placed FIRST Above Headline */}
+          <div style={{ marginBottom: '48px' }}>
+            <ViptoProductCaptureAnimation />
+          </div>
+
+          {/* SUPPORTING HEADLINE & CORE MESSAGING (Below Animation) */}
           <div style={{ maxWidth: '840px', margin: '0 auto', textAlign: 'center' }}>
             {/* Status Pill */}
             <div
@@ -61,9 +75,8 @@ export default function HomePage() {
                 background: 'var(--bg-secondary)',
                 border: '1px solid var(--border-subtle)',
                 fontSize: '0.8125rem',
-                fontFamily: 'var(--font-mono)',
                 color: 'var(--text-secondary)',
-                marginBottom: '28px',
+                marginBottom: '24px',
               }}
             >
               <span
@@ -75,20 +88,24 @@ export default function HomePage() {
                   boxShadow: '0 0 8px var(--accent-emerald)',
                 }}
               />
-              <span>Unincorporated Technology Product Initiative</span>
+              <span style={{ fontWeight: 600 }}>Unincorporated Technology Product Initiative</span>
             </div>
 
             {/* Main Headline */}
             <h1
               style={{
-                marginBottom: '24px',
+                marginBottom: '20px',
                 fontWeight: 800,
+                fontSize: 'clamp(2.2rem, 3.8vw + 0.8rem, 3.6rem)',
+                lineHeight: 1.18,
+                letterSpacing: '-0.03em',
+                textWrap: 'balance',
               }}
             >
               Building technology that makes{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #60a5fa, #34d399)',
+                  background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-emerald) 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -101,14 +118,15 @@ export default function HomePage() {
             {/* Sub-description */}
             <p
               style={{
-                fontSize: '1.2rem',
-                lineHeight: 1.6,
+                fontSize: '1.15rem',
+                lineHeight: 1.65,
                 color: 'var(--text-secondary)',
-                maxWidth: '680px',
-                margin: '0 auto 36px',
+                maxWidth: '700px',
+                margin: '0 auto 32px',
+                textWrap: 'balance',
               }}
             >
-              Vipto is exploring how technology can solve the practical gap between searching online and finding verified products in nearby local physical stores.
+              Need a laptop charger, specific textbook, or cable in 10 minutes? Vipto bridges the gap between searching online and finding verified products on physical shelves in neighborhood stores.
             </p>
 
             {/* CTAs */}
@@ -118,7 +136,7 @@ export default function HomePage() {
                 flexWrap: 'wrap',
                 justifyContent: 'center',
                 gap: '14px',
-                marginBottom: '44px',
+                marginBottom: '36px',
               }}
             >
               <Link href="/product" className="btn btn-primary btn-lg" id="hero-explore-btn">
@@ -130,33 +148,37 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Key Value Proposition Badge */}
+            {/* Key Value Proposition Flow Badge */}
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
                 gap: '12px',
-                padding: '10px 20px',
-                borderRadius: 'var(--radius-md)',
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border-subtle)',
-                fontSize: '0.9rem',
-                color: 'var(--text-muted)',
-                fontFamily: 'var(--font-mono)',
+                padding: '10px 22px',
+                borderRadius: 'var(--radius-full)',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border-medium)',
+                boxShadow: 'var(--shadow-sm)',
+                fontSize: '0.875rem',
+                color: 'var(--text-secondary)',
               }}
             >
-              <span>Search Online</span>
-              <span>→</span>
-              <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Confirm Availability</span>
-              <span>→</span>
-              <span>Buy Offline</span>
+              <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>1. Search Online</span>
+              <span style={{ color: 'var(--text-muted)' }}>→</span>
+              <span style={{ color: 'var(--accent-emerald)', fontWeight: 700 }}>2. Confirm Stock</span>
+              <span style={{ color: 'var(--text-muted)' }}>→</span>
+              <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>3. Buy Offline</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. WHY WE'RE BUILDING VIPTO (THE PROBLEM) */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px' }}>
+      {/* ========================================================================= */}
+      {/* 2. WHY WE'RE BUILDING VIPTO (THE REAL-WORLD PROBLEM)                     */}
+      {/* ========================================================================= */}
+      <section style={{ paddingTop: '88px', paddingBottom: '88px' }}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">The Problem We Care About</span>
@@ -174,12 +196,13 @@ export default function HomePage() {
               marginBottom: '40px',
             }}
           >
+            {/* Card 1: Search Friction */}
             <div className="card">
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '8px',
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
                   background: 'rgba(239, 68, 68, 0.1)',
                   color: '#f87171',
                   display: 'flex',
@@ -188,20 +211,21 @@ export default function HomePage() {
                   marginBottom: '20px',
                 }}
               >
-                <Search size={20} />
+                <Search size={22} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>The Search Friction</h3>
-              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)' }}>
-                When someone urgently needs an item—like a laptop charger or specialized medicine—they often visit four or five stores blindly before finding one that has it in stock.
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>The Blind Store Hunt</h3>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                When someone urgently needs an item—like a laptop charger or specialized medicine—they often visit four or five stores blindly before finding one that actually has it in stock.
               </p>
             </div>
 
+            {/* Card 2: Delivery Delay */}
             <div className="card">
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '8px',
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
                   background: 'rgba(245, 158, 11, 0.1)',
                   color: '#fbbf24',
                   display: 'flex',
@@ -210,20 +234,21 @@ export default function HomePage() {
                   marginBottom: '20px',
                 }}
               >
-                <MapPin size={20} />
+                <Clock size={22} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>The Storefront Blindspot</h3>
-              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)' }}>
-                Digital maps show where shops are located, but say nothing about what is currently in stock on their shelves. Nearby customers remain unaware of local inventory.
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>The Multi-Day Delivery Delay</h3>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Centralized e-commerce takes 1–3 days to deliver items that are already sitting on physical store shelves 500 meters down the street from where the buyer is sitting.
               </p>
             </div>
 
+            {/* Card 3: Invisible Neighborhood Retail */}
             <div className="card">
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '8px',
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
                   background: 'rgba(59, 130, 246, 0.1)',
                   color: '#60a5fa',
                   display: 'flex',
@@ -232,149 +257,60 @@ export default function HomePage() {
                   marginBottom: '20px',
                 }}
               >
-                <CheckCircle2 size={20} />
+                <Store size={22} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>The Missing Confirmation</h3>
-              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)' }}>
-                Small retailers have great inventory but cannot afford complex ERPs. Vipto provides a zero-friction request-and-reply mechanism to verify stock instantly.
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Invisible Local Storefronts</h3>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Neighborhood retailers stock high-quality merchandise but remain invisible during digital search because they lack the time and budget for complex enterprise software.
               </p>
             </div>
           </div>
-
-          <div
-            style={{
-              padding: '24px 32px',
-              borderRadius: 'var(--radius-lg)',
-              background: 'var(--bg-secondary)',
-              border: '1px solid var(--border-subtle)',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '16px',
-            }}
-          >
-            <div>
-              <div style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
-                Explore the complete product vision &amp; dual-app architecture
-              </div>
-              <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                Understand how Customer and Seller applications work together.
-              </div>
-            </div>
-            <Link href="/product" className="btn btn-secondary btn-sm">
-              <span>Read Product Vision</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* 3. INTERACTIVE WORKFLOW PREVIEW */}
-      <section style={{ paddingTop: '40px', paddingBottom: '80px' }}>
-        <div className="container">
-          <WorkflowDiagram />
-        </div>
-      </section>
-
-      {/* 4. OUR FOCUS AREAS */}
-      <section style={{ paddingTop: '40px', paddingBottom: '80px', borderTop: '1px solid var(--border-subtle)' }}>
+      {/* ========================================================================= */}
+      {/* 3. HOW VIPTO WORKS (THE REQUEST-AND-REPLY MODEL)                         */}
+      {/* ========================================================================= */}
+      <section
+        style={{
+          paddingTop: '88px',
+          paddingBottom: '88px',
+          background: 'var(--bg-secondary)',
+          borderTop: '1px solid var(--border-subtle)',
+          borderBottom: '1px solid var(--border-subtle)',
+        }}
+      >
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Core Domains</span>
-            <h2 className="section-title">Our Focus</h2>
+            <span className="section-label">Our Approach</span>
+            <h2 className="section-title">How Vipto works</h2>
             <p className="section-subtitle">
-              The fundamental engineering, product, and design principles guiding how we build Vipto.
+              A lightweight, 3-step workflow connecting customer intent directly to local store counters in seconds.
             </p>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '24px',
-            }}
-          >
-            {focusAreas.map((focus) => {
-              const Icon = getFocusIcon(focus.iconName);
-              return (
-                <div key={focus.title} className="card card-hover">
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      padding: '10px',
-                      borderRadius: '10px',
-                      background: 'var(--bg-tertiary)',
-                      color: 'var(--text-primary)',
-                      border: '1px solid var(--border-subtle)',
-                      marginBottom: '18px',
-                    }}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <h3 style={{ fontSize: '1.2rem', marginBottom: '10px' }}>{focus.title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.6 }}>
-                    {focus.description}
-                  </p>
-                  <ul
-                    style={{
-                      listStyle: 'none',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '8px',
-                      fontSize: '0.825rem',
-                      color: 'var(--text-muted)',
-                      borderTop: '1px solid var(--border-subtle)',
-                      paddingTop: '14px',
-                    }}
-                  >
-                    {focus.bullets.map((b, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
-                        <span style={{ color: 'var(--accent-primary)' }}>•</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+          <WorkflowDiagram />
+
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <Link href="/product" className="btn btn-secondary">
+              <span>Explore the full technical architecture</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 5. PRODUCT DEVELOPMENT TIMELINE */}
-      <section style={{ paddingTop: '40px', paddingBottom: '80px' }}>
+      {/* ========================================================================= */}
+      {/* 4. DUAL APPLICATION ECOSYSTEM                                            */}
+      {/* ========================================================================= */}
+      <section style={{ paddingTop: '88px', paddingBottom: '88px' }}>
         <div className="container">
-          <Timeline />
-        </div>
-      </section>
-
-      {/* 6. LATEST FROM THE VIPTO JOURNAL */}
-      <section style={{ paddingTop: '40px', paddingBottom: '80px', borderTop: '1px solid var(--border-subtle)' }}>
-        <div className="container">
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
-              marginBottom: '48px',
-              gap: '16px',
-            }}
-          >
-            <div>
-              <span className="section-label">Editorial &amp; Engineering</span>
-              <h2 className="section-title" style={{ marginBottom: '8px' }}>
-                Latest from Vipto Journal
-              </h2>
-              <p className="section-subtitle">
-                Ideas, experiments, engineering notes, and lessons from building Vipto.
-              </p>
-            </div>
-            <Link href="/journal" className="btn btn-secondary btn-sm">
-              <span>View all publications</span>
-              <ArrowRight size={14} />
-            </Link>
+          <div className="section-header">
+            <span className="section-label">System Architecture</span>
+            <h2 className="section-title">Two applications, one unified mission</h2>
+            <p className="section-subtitle">
+              Engineered specifically to solve the distinct needs of everyday shoppers and busy retail storekeepers.
+            </p>
           </div>
 
           <div
@@ -384,6 +320,147 @@ export default function HomePage() {
               gap: '28px',
             }}
           >
+            {/* Consumer App Card */}
+            <div className="card" style={{ padding: '36px' }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '4px 12px',
+                  borderRadius: 'var(--radius-full)',
+                  background: 'var(--accent-primary-glow)',
+                  color: 'var(--accent-primary)',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  marginBottom: '20px',
+                }}
+              >
+                <Smartphone size={14} />
+                <span>FOR SHOPPERS</span>
+              </div>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '12px' }}>Vipto Consumer App</h3>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px' }}>
+                Instant search across stores within walking or short driving radius. Push a priority stock check request and receive definitive confirmation in seconds.
+              </p>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px',
+                  fontSize: '0.875rem',
+                  color: 'var(--text-secondary)',
+                }}
+              >
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={16} color="var(--accent-emerald)" />
+                  <span>Real-time store proximity and walking distance</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={16} color="var(--accent-emerald)" />
+                  <span>1-tap availability verification</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={16} color="var(--accent-emerald)" />
+                  <span>Direct turn-by-turn navigation to billing counter</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Merchant App Card */}
+            <div className="card" style={{ padding: '36px' }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '4px 12px',
+                  borderRadius: 'var(--radius-full)',
+                  background: 'var(--accent-emerald-bg)',
+                  color: 'var(--accent-emerald)',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  marginBottom: '20px',
+                }}
+              >
+                <Store size={14} />
+                <span>FOR LOCAL RETAILERS</span>
+              </div>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '12px' }}>Vipto Partner App</h3>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px' }}>
+                A frictionless merchant tool that requires zero complex catalog maintenance. Receive urgent product queries from nearby customers and respond in a single tap.
+              </p>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px',
+                  fontSize: '0.875rem',
+                  color: 'var(--text-secondary)',
+                }}
+              >
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={16} color="var(--accent-primary)" />
+                  <span>Sub-second high-contrast notification trigger</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={16} color="var(--accent-primary)" />
+                  <span>1-tap response (&ldquo;Available&rdquo; or &ldquo;Not Available&rdquo;)</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={16} color="var(--accent-primary)" />
+                  <span>Drives high-intent walk-in foot traffic directly to counter</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. FEATURED JOURNAL ARTICLES & RESEARCH                                  */}
+      {/* ========================================================================= */}
+      <section
+        style={{
+          paddingTop: '88px',
+          paddingBottom: '88px',
+          background: 'var(--bg-secondary)',
+          borderTop: '1px solid var(--border-subtle)',
+          borderBottom: '1px solid var(--border-subtle)',
+        }}
+      >
+        <div className="container">
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              marginBottom: '48px',
+              flexWrap: 'wrap',
+              gap: '16px',
+            }}
+          >
+            <div>
+              <span className="section-label">Engineering &amp; Product Journal</span>
+              <h2 className="section-title" style={{ marginBottom: 0 }}>
+                Our latest thinking &amp; reflections
+              </h2>
+            </div>
+            <Link href="/journal" className="btn btn-secondary">
+              <span>View all articles</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '24px',
+            }}
+          >
             {latestArticles.map((article) => (
               <ArticleCard key={article.slug} article={article} />
             ))}
@@ -391,116 +468,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. RECENT UPDATE SNIPPET */}
-      <section style={{ paddingTop: '40px', paddingBottom: '80px' }}>
-        <div className="container">
+      {/* ========================================================================= */}
+      {/* 6. TRANSPARENCY & COMMUNITY INITIATIVE                                    */}
+      {/* ========================================================================= */}
+      <section style={{ paddingTop: '88px', paddingBottom: '88px' }}>
+        <div className="container-narrow">
           <div
             style={{
-              background: 'var(--bg-secondary)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: 'var(--radius-xl)',
-              padding: '36px',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '12px',
-                marginBottom: '20px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className="badge badge-emerald">{latestUpdate.status}</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  {latestUpdate.period}
-                </span>
-              </div>
-              <Link href="/updates" className="btn btn-subtle btn-sm">
-                <span>View Full Changelog</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '12px' }}>
-              {latestUpdate.headline}
-            </h3>
-
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px' }}>
-              {latestUpdate.summary}
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: '16px',
-                background: 'var(--bg-primary)',
-                padding: '20px',
-                borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--border-subtle)',
-              }}
-            >
-              <div>
-                <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '6px' }}>
-                  What was explored
-                </strong>
-                <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>
-                  {latestUpdate.explored[0]}
-                </p>
-              </div>
-              <div>
-                <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '6px' }}>
-                  Key lesson
-                </strong>
-                <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>
-                  {latestUpdate.learned[0]}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. JOIN US & CONTRIBUTE CTA */}
-      <section style={{ paddingTop: '20px', paddingBottom: '60px' }}>
-        <div className="container">
-          <div
-            style={{
-              background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.05))',
+              background: 'var(--bg-card)',
               border: '1px solid var(--border-medium)',
               borderRadius: 'var(--radius-xl)',
-              padding: '48px 36px',
+              padding: '44px 36px',
               textAlign: 'center',
             }}
           >
             <div
               style={{
-                display: 'inline-flex',
-                padding: '10px',
+                width: '52px',
+                height: '52px',
                 borderRadius: '50%',
-                background: 'var(--bg-secondary)',
-                color: 'var(--accent-primary)',
-                marginBottom: '16px',
+                background: 'var(--accent-emerald-bg)',
+                color: 'var(--accent-emerald)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 20px',
               }}
             >
-              <Users size={24} />
+              <ShieldCheck size={28} />
             </div>
-            <h2 style={{ fontSize: '1.8rem', marginBottom: '12px' }}>
-              Interested in building with Vipto?
+
+            <h2 style={{ fontSize: '1.6rem', marginBottom: '12px' }}>
+              Building in the Open with Complete Transparency
             </h2>
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '580px', margin: '0 auto 28px' }}>
-              We are interested in people who enjoy building, experimenting, learning, and solving real-world product discovery problems. Structured student internships and contributor roles are available.
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '580px', margin: '0 auto 24px' }}>
+              Vipto operates as an unincorporated technology product initiative. We openly document our engineering discoveries, retail experiments, and codebase for builders, researchers, and students.
             </p>
+
             <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
-              <Link href="/join" className="btn btn-primary" id="home-join-cta-btn">
-                <span>View Opportunities &amp; Apply</span>
+              <Link href="/join" className="btn btn-primary">
+                <span>Join Us &amp; Contribute</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/about" className="btn btn-secondary">
-                <span>Learn about the initiative</span>
+              <Link href="/transparency" className="btn btn-secondary">
+                <span>Read Transparency Notice</span>
               </Link>
             </div>
           </div>

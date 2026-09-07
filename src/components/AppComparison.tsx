@@ -234,7 +234,7 @@ export default function AppComparison() {
               justifyContent: 'space-between',
               marginBottom: '20px',
               fontSize: '0.8rem',
-              fontFamily: 'var(--font-mono)',
+              fontWeight: 600,
               color: 'var(--text-muted)',
             }}
           >

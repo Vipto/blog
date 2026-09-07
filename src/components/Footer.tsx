@@ -87,11 +87,10 @@ export default function Footer() {
               style={{
                 fontSize: '0.875rem',
                 fontWeight: 700,
-                letterSpacing: '0.06em',
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
                 color: 'var(--text-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--font-mono)',
               }}
             >
               Navigation
@@ -144,11 +143,10 @@ export default function Footer() {
               style={{
                 fontSize: '0.875rem',
                 fontWeight: 700,
-                letterSpacing: '0.06em',
+                letterSpacing: '0.04em',
                 textTransform: 'uppercase',
                 color: 'var(--text-primary)',
                 marginBottom: '16px',
-                fontFamily: 'var(--font-mono)',
               }}
             >
               Connect
