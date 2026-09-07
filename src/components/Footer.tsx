@@ -33,22 +33,18 @@ export default function Footer() {
                 marginBottom: '16px',
               }}
             >
-              <div
+              <img
+                src="/vipto_logo.png"
+                alt="Vipto Logo"
+                width={30}
+                height={30}
                 style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '30px',
+                  height: '30px',
                   borderRadius: '6px',
-                  background: 'linear-gradient(135deg, #2563eb, #10b981)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#ffffff',
-                  fontWeight: 800,
-                  fontSize: '15px',
+                  objectFit: 'contain',
                 }}
-              >
-                V
-              </div>
+              />
               <span
                 style={{
                   fontSize: '1.2rem',

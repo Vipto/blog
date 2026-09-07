@@ -66,23 +66,19 @@ export default function Navbar() {
             textDecoration: 'none',
           }}
         >
-          <div
+          <img
+            src="/vipto_logo.png"
+            alt="Vipto Logo"
+            width={34}
+            height={34}
             style={{
-              width: '32px',
-              height: '32px',
+              width: '34px',
+              height: '34px',
               borderRadius: '8px',
-              background: 'linear-gradient(135deg, #2563eb, #10b981)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              fontWeight: 800,
-              fontSize: '18px',
-              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)',
+              objectFit: 'contain',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)',
             }}
-          >
-            V
-          </div>
+          />
           <span
             style={{
               fontSize: '1.25rem',
